@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:layout_gravity="top"
+
+        >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:id="@+id/imageDetails"
+        android:paddingBottom="0dp"
+         />
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="15dp"
+            android:layout_gravity="bottom"
+            android:textColor="#EFD242"
+            android:background="#55000000"
+            android:textStyle="bold|italic"
+            android:textAlignment="center"
+            android:textSize="24dp"
+            />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Presentation de la photo avec beaucoup de truc et d'ingregient accompagner de sauce et balazoenjlenfkjzenr zekjnr ezkjnr zekjnr zkjen r"
+        android:id="@+id/textDetails"
+        android:textColor="@color/dim_foreground_disabled_material_dark"
+        />
+    </LinearLayout>
+</FrameLayout>

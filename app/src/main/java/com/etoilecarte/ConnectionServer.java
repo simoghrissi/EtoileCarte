@@ -3,6 +3,8 @@ package com.etoilecarte;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +21,15 @@ public class ConnectionServer  extends AppCompatActivity {
 
     private static ConnectionServer instance;
     String urlString=null ;
+    EditText adressText;
+
 
     private ConnectionServer() {
     }
-        public boolean IsReachable(Context context) {
-            View viewSetting = LayoutInflater.from(ConnectionServer.this).inflate(R.layout.setting, null);
+        public boolean IsReachable(Context context,String urlString) {
 
-            EditText adressText = (EditText)viewSetting.findViewById(R.id.adress);
-            urlString = adressText.getText().toString();
+
+
             // First, check we have any sort of connectivity
             final ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
             final NetworkInfo netInfo = connMgr.getActiveNetworkInfo();
@@ -52,7 +55,7 @@ public class ConnectionServer  extends AppCompatActivity {
         }
 
     public static ConnectionServer getInstance(){
-        if (null == instance) { // Premier appel
+        if (null == instance) { // Premie   r appel
             instance = new ConnectionServer();
         }
         return instance;

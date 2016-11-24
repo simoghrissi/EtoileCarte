@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:icon="@mipmap/ic_launcher"
             android:screenOrientation="portrait"
             android:label="La petite étoile">
@@ -26,29 +26,29 @@
         </activity>
 
         <activity
-            android:name=".ListFoods"
+            android:name=".Activities.ListFoods"
             android:label="List Foods"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".Activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".Activities.MainActivity" />
         </activity>
 
         <activity
-            android:name=".Setting"
+            android:name=".Activities.Setting"
             android:label="List Foods"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".Activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".Activities.MainActivity" />
         </activity>
         <activity
-            android:name=".DetailsActivity"
+            android:name=".Activities.DetailsActivity"
             android:label="Details Foods"
-            android:parentActivityName=".ListFoods">
+            android:parentActivityName=".Activities.ListFoods">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ListFoods" />
+                android:value=".Activities.ListFoods" />
         </activity>
 
 

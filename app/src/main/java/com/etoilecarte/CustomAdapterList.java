@@ -40,10 +40,10 @@ public class CustomAdapterList extends ArrayAdapter<Food> {
         View customView = inflater.inflate(R.layout.custom_row,parent ,false);
 
 
-        TextView titre = (TextView)(customView.findViewById((R.id.titre)));
-        TextView description = (TextView)(customView.findViewById(R.id.description));
+        AutoResizeTextView titre = (AutoResizeTextView)(customView.findViewById((R.id.titre)));
+        AutoResizeTextView description = (AutoResizeTextView)(customView.findViewById(R.id.description));
         ImageView smallImage = (ImageView)(customView.findViewById(R.id.imageFood));
-        TextView prix = (TextView)(customView.findViewById(R.id.prix));
+        AutoResizeTextView prix = (AutoResizeTextView)(customView.findViewById(R.id.prix));
 
 
         titre.setText(food.getTitre());

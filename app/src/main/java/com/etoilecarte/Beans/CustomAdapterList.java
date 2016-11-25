@@ -47,7 +47,8 @@ public class CustomAdapterList extends ArrayAdapter<Food> {
         AutoResizeTextView description = (AutoResizeTextView)(customView.findViewById(R.id.description));
         ImageView smallImage = (ImageView)(customView.findViewById(R.id.imageFood));
         AutoResizeTextView prix = (AutoResizeTextView)(customView.findViewById(R.id.prix));
-
+        ImageView plusPannier= (ImageView)(customView.findViewById(R.id.icon_plus));
+        ImageView moinPannier =(ImageView)(customView.findViewById(R.id.icon_moins));
 
         titre.setText(food.getTitre());
         description.setText(food.getDescription());

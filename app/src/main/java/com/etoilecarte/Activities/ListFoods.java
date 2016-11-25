@@ -1,6 +1,8 @@
 package com.etoilecarte.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,6 +18,8 @@ import com.tktm.lyvraison.beans.Article;
 import com.tktm.lyvraison.beans.Category;
 
 import java.util.ArrayList;
+
+import static com.etoilecarte.Activities.AjouterPanierActivity.SHARED_PREFS_KEY_PANIER;
 
 /**
  * Created by simo on 16/04/16.
@@ -49,6 +53,7 @@ public class ListFoods  extends AppCompatActivity implements  AdapterView.OnItem
                 food.setPrix(String.valueOf(article.getPrice())+" €");
                 food.setImage(article.getDescription().getUrlSmallImage());
                 food.setDescription(article.getDescription().getText());
+                food.setIdFood(article.getId());
                 foods.add(food);
             }
 

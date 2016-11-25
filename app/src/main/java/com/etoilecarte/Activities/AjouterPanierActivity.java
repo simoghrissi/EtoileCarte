@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import static com.etoilecarte.Activities.MainActivity.SHARED_PREFS_KEY_PANIER;
+
 
 /**
  * Created by mghrissi on 25/11/2016.
@@ -21,7 +23,6 @@ import java.util.Set;
 public class AjouterPanierActivity extends AppCompatActivity {
 
     ListView mListView;
-    public static final String SHARED_PREFS_KEY_PANIER="PanierListKEY";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

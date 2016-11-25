@@ -19,7 +19,6 @@ import com.tktm.lyvraison.beans.Category;
 
 import java.util.ArrayList;
 
-import static com.etoilecarte.Activities.AjouterPanierActivity.SHARED_PREFS_KEY_PANIER;
 
 /**
  * Created by simo on 16/04/16.

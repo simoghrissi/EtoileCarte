@@ -26,7 +26,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.etoilecarte.Activities.AjouterPanierActivity.SHARED_PREFS_KEY_PANIER;
+import static com.etoilecarte.Activities.MainActivity.SHARED_PREFS_KEY_PANIER;
 
 /**
  * Created by simo on 14/04/16.

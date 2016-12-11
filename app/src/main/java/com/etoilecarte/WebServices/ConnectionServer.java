@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 
 import android.support.v7.app.AppCompatActivity;
 
+import android.util.Log;
 import android.widget.EditText;
 
 import java.io.IOException;
@@ -43,9 +44,9 @@ public class ConnectionServer  extends AppCompatActivity {
                     urlc.setRequestProperty("Connection", "close");
                     urlc.setConnectTimeout(10 * 1000);
                     urlc.connect();
-                    isReachable = (urlc.getResponseCode() == 200);
+                    isReachable = (urlc.getResponseCode() == 404|| urlc.getResponseCode() == 200);
                 } catch (IOException e) {
-                    //Log.e(TAG, e.getMessage());
+                    Log.e("", e.getMessage());
                 }
             }
 

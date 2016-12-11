@@ -37,7 +37,7 @@ public class Setting extends AppCompatActivity implements View.OnClickListener {
             textUrlBefore =  preferences.getString("ServerName", "");
             adressText.setText(textUrlBefore);
         }catch (Exception e){
-
+            e.printStackTrace();
         }
 
     }
@@ -62,6 +62,8 @@ public class Setting extends AppCompatActivity implements View.OnClickListener {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        onBackPressed();
+
                     }
                 });
                 AlertDialog alert = builder.create();
@@ -73,6 +75,8 @@ public class Setting extends AppCompatActivity implements View.OnClickListener {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        onBackPressed();
+
                     }
                 }).setNegativeButton("cancel", null);
                 AlertDialog alert = builder.create();

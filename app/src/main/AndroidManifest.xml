@@ -50,7 +50,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.ListFoods" />
         </activity>
-
+        <activity
+            android:name=".Activities.AjouterPanierActivity"
+            android:label="Details Foods"
+            android:parentActivityName=".Activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity" />
+        </activity>
 
     </application>
 

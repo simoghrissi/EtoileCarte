@@ -68,14 +68,19 @@ public class CustomAdapterList extends ArrayAdapter<Food> {
                 @Override
                 public void onClick(View v) {
                     textCount.setText(Integer.toString(Integer.parseInt((textCount.getText().toString()))+1));
-                    addToPanier(Integer.toString(food.getIdFood()));
+                    addToPanier(food.getTitre());
                 }
             });
         moinPannier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textCount.setText(Integer.toString(Integer.parseInt(textCount.getText().toString())-1));
-                deleteFromPanier(Integer.toString(food.getIdFood()));
+                int value =Integer.parseInt(textCount.getText().toString())-1;
+                if (value < 0) {
+                    textCount.setText("0");
+                }else{
+                    textCount.setText(Integer.toString(Integer.parseInt(textCount.getText().toString())-1));
+                    deleteFromPanier(food.getTitre());
+                }
             }
         });
         titre.setText(food.getTitre());
@@ -98,10 +103,26 @@ public class CustomAdapterList extends ArrayAdapter<Food> {
     }
 
     public void addToPanier(String t) {
+        boolean finded = false;
+
         if (null == listPanier) {
             listPanier = new ArrayList<String>();
+            listPanier.add(0+" "+t);
+            finded = true;
         }
-        listPanier.add(t);
+        for(int i =0;i<listPanier.size();i++){
+            if(listPanier.get(i).toString().contains(t)){
+                if(listPanier.get(i).toString().matches(".*\\d.*")){
+                    int value = Integer.parseInt(listPanier.get(i).toString().replaceAll("[^0-9]", ""));
+                    listPanier.set(i,value+1+" "+t);
+                    finded=true;
+                    break;
+                }
+            }
+        }
+        if(finded==false){
+            listPanier.add(1+" "+t);
+        }
         // call preferences from MainActivity;
         SharedPreferences.Editor editor = prefs.edit();
         Set<String> set = new HashSet<String>();
@@ -110,16 +131,24 @@ public class CustomAdapterList extends ArrayAdapter<Food> {
         editor.commit();
     }
 
-    public void deleteFromPanier(String id){
+    public void deleteFromPanier(String t){
 
         Set<String> set = prefs.getStringSet(SHARED_PREFS_KEY_PANIER,null);
         listPanier=new ArrayList<String>(set);
-
-      for(int i =0 ;i < listPanier.size();i++){
-                if(listPanier.get(i).equals(id)){
-                    listPanier.remove(listPanier.get(i));
+// a finir le cas             if(listPanier.get(i).toString().equalsIgnoreCase(0+" "+t)){
+//+ traitement du bouton quand on part et on reviens !!! d'une vue a une autre .
+        for(int i =0;i<listPanier.size();i++){
+            if(listPanier.get(i).toString().equalsIgnoreCase(0+" "+t)){
+                listPanier.remove(listPanier.get(i));
+                break;
+            }else if(listPanier.get(i).toString().contains(t)){
+                if(listPanier.get(i).toString().matches(".*\\d.*")){
+                    int value = Integer.parseInt(listPanier.get(i).toString().replaceAll("[^0-9]", ""));
+                    listPanier.set(i,value-1+" "+t);
+                    break;
                 }
-      }
+            }
+        }
         SharedPreferences.Editor editor = prefs.edit();
         Set<String> newSet = new HashSet<String>();
         newSet.addAll(listPanier);

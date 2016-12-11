@@ -6,6 +6,11 @@
         android:id="@+id/action_setting"
         android:icon="@drawable/abc_ic_menu_moreoverflow_mtrl_alpha"
         android:title="setting"
-        app:showAsAction="never"/>
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/action_panier"
+        android:icon="@drawable/panier"
+        android:title="panier"
+        android:showAsAction="always" />
 
 </menu>

@@ -8,6 +8,11 @@
         android:title="setting"
         app:showAsAction="ifRoom"/>
 
+    <item android:id="@+id/action_acceuil"
+        android:title="Acceuil"
+        app:showAsAction="ifRoom"
+        />
+
     <item android:id="@+id/action_panier"
         android:icon="@drawable/panier"
         android:title="panier"
@@ -17,4 +22,6 @@
         android:title="Tables"
         app:showAsAction="always"
         />
+
+
 </menu>

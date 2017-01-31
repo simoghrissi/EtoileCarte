@@ -69,6 +69,7 @@ public class CustomAdapterList extends ArrayAdapter<Food> {
                 public void onClick(View v) {
                     textCount.setText(Integer.toString(Integer.parseInt((textCount.getText().toString()))+1));
                     addToPanier(food.getTitre());
+                    Session.table.getFoods().add(food);
                 }
             });
         moinPannier.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +81,7 @@ public class CustomAdapterList extends ArrayAdapter<Food> {
                 }else{
                     textCount.setText(Integer.toString(Integer.parseInt(textCount.getText().toString())-1));
                     deleteFromPanier(food.getTitre());
+                    Session.table.getFoods().remove(food);
                 }
             }
         });

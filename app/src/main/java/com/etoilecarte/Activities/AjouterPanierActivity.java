@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.etoilecarte.Beans.Session;
 import com.etoilecarte.R;
 
 import java.util.ArrayList;
@@ -38,5 +39,7 @@ public class AjouterPanierActivity extends AppCompatActivity {
             List<String> listPanier=new ArrayList<String>(set);
             mListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listPanier));
         }
+        /*if(validerPanier){
+            Session.instance=null;        }*/
     }
 }

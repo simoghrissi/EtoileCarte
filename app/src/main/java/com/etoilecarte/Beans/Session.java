@@ -1,6 +1,7 @@
-package com.etoilecarte.Activities;
+package com.etoilecarte.Beans;
 
-import android.content.Context;
+
+import java.util.ArrayList;
 
 /**
  * Created by mghrissi on 30/01/2017.
@@ -9,14 +10,15 @@ import android.content.Context;
 public class Session {
     public static Session instance = null;
     public static String idTableIncach =null;
+    public static Table table;
 
+    public static ArrayList<Table>arrayTable = new ArrayList<>();
 
     public static void newTable(final String idTable) {
-
-        if (instance != null) {
-            return;
-        }
+         table = new Table();
+        arrayTable.add(table);
         instance = new Session();
         instance.idTableIncach = idTable;
+        table.setIdTable(idTable);
     }
 }

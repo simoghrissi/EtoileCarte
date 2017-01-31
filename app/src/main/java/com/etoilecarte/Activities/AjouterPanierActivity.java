@@ -33,7 +33,10 @@ public class AjouterPanierActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS_KEY_PANIER, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         Set<String> set = prefs.getStringSet(SHARED_PREFS_KEY_PANIER, null);
-        List<String> listPanier=new ArrayList<String>(set);
-        mListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listPanier));
+
+        if(set!=null){
+            List<String> listPanier=new ArrayList<String>(set);
+            mListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listPanier));
+        }
     }
 }

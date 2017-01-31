@@ -11,6 +11,10 @@
     <item android:id="@+id/action_panier"
         android:icon="@drawable/panier"
         android:title="panier"
-        android:showAsAction="always" />
+        app:showAsAction="always" />
 
+    <item android:id="@+id/action_table"
+        android:title="Tables"
+        app:showAsAction="always"
+        />
 </menu>

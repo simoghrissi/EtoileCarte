@@ -14,7 +14,7 @@
         />
 
     <item android:id="@+id/action_panier"
-        android:icon="@drawable/panier"
+        android:icon="@drawable/icone_plus"
         android:title="panier"
         app:showAsAction="always" />
 

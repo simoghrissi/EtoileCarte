@@ -62,7 +62,7 @@
                 android:value=".Activities.ListFoods" />
         </activity>
         <activity
-            android:name=".Activities.AjouterPanierActivity"
+            android:name=".Activities.PanierActivity"
             android:label="Details Foods"
             android:parentActivityName=".Activities.MainActivity">
             <meta-data

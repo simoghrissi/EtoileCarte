@@ -76,6 +76,7 @@
                 android:id="@+id/prix"
                 android:layout_marginRight="10dp"
                 android:gravity="right"
+                android:maxLines="1"
                 />
 
         </LinearLayout>

@@ -16,6 +16,7 @@ import com.etoilecarte.Activities.MainActivity;
 import com.etoilecarte.Beans.Food;
 import com.etoilecarte.R;
 import com.etoilecarte.Utils.AutoResizeTextView;
+import com.etoilecarte.Utils.Utils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,7 +33,7 @@ import static com.etoilecarte.Activities.MainActivity.SHARED_PREFS_KEY_PANIER;
  * Created by simo on 14/04/16.
  */
 public class CustomAdapterList extends ArrayAdapter<Food> {
-    ArrayList listPanier;
+   // ArrayList listPanier;
     Context applicationContext;
     SharedPreferences prefs;
     public CustomAdapterList(Context context, ArrayList<Food> foods){
@@ -69,7 +70,14 @@ public class CustomAdapterList extends ArrayAdapter<Food> {
                 public void onClick(View v) {
                     textCount.setText(Integer.toString(Integer.parseInt((textCount.getText().toString()))+1));
                     addToPanier(food.getTitre());
-                    Session.table.getFoods().add(food);
+                    Table table = Utils.searchTableById(Session.table.getIdTable());
+                        Session.table =table ;
+                    if(table.getFoods()==null){
+                        ArrayList<Food> foods= new ArrayList<>();
+                        Session.table.setFoods(foods);
+                    }
+                     Session.table.getFoods().add(food);
+
                 }
             });
         moinPannier.setOnClickListener(new View.OnClickListener() {
@@ -106,57 +114,57 @@ public class CustomAdapterList extends ArrayAdapter<Food> {
 
     public void addToPanier(String t) {
         boolean finded = false;
-
-        if (null == listPanier) {
-            listPanier = new ArrayList<String>();
-            listPanier.add(0+" "+t);
+        if (null == Session.panier) {
+            Session.panier = new ArrayList<String>();
+            Session.panier.add(0+" "+t);
             finded = true;
         }
-        for(int i =0;i<listPanier.size();i++){
-            if(listPanier.get(i).toString().contains(t)){
-                if(listPanier.get(i).toString().matches(".*\\d.*")){
-                    int value = Integer.parseInt(listPanier.get(i).toString().replaceAll("[^0-9]", ""));
-                    listPanier.set(i,value+1+" "+t);
+        for(int i =0;i<Session.panier.size();i++){
+            if(Session.panier.get(i).toString().contains(t)){
+                if(Session.panier.get(i).toString().matches(".*\\d.*")){
+                    int value = Integer.parseInt(Session.panier.get(i).toString().replaceAll("[^0-9]", ""));
+                    Session.panier.set(i,value+1+" "+t);
                     finded=true;
                     break;
                 }
             }
         }
         if(finded==false){
-            listPanier.add(1+" "+t);
+            Session.panier.add(1+" "+t);
         }
         // call preferences from MainActivity;
-        SharedPreferences.Editor editor = prefs.edit();
+       /* SharedPreferences.Editor editor = prefs.edit();
         Set<String> set = new HashSet<String>();
         set.addAll(listPanier);
         editor.putStringSet(SHARED_PREFS_KEY_PANIER,set);
-        editor.commit();
+        editor.commit();*/
     }
 
     public void deleteFromPanier(String t){
 
         Set<String> set = prefs.getStringSet(SHARED_PREFS_KEY_PANIER,null);
-        listPanier=new ArrayList<String>(set);
+        Session.panier=new ArrayList<String>(set);
 // a finir le cas             if(listPanier.get(i).toString().equalsIgnoreCase(0+" "+t)){
 //+ traitement du bouton quand on part et on reviens !!! d'une vue a une autre .
-        for(int i =0;i<listPanier.size();i++){
-            if(listPanier.get(i).toString().equalsIgnoreCase(0+" "+t)){
-                listPanier.remove(listPanier.get(i));
+        for(int i =0;i<Session.panier.size();i++){
+            if(Session.panier.get(i).toString().equalsIgnoreCase(0+" "+t)){
+                Session.panier.remove(Session.panier.get(i));
                 break;
-            }else if(listPanier.get(i).toString().contains(t)){
-                if(listPanier.get(i).toString().matches(".*\\d.*")){
-                    int value = Integer.parseInt(listPanier.get(i).toString().replaceAll("[^0-9]", ""));
-                    listPanier.set(i,value-1+" "+t);
+            }else if(Session.panier.get(i).toString().contains(t)){
+                if(Session.panier.get(i).toString().matches(".*\\d.*")){
+                    int value = Integer.parseInt(Session.panier.get(i).toString().replaceAll("[^0-9]", ""));
+                    Session.panier.set(i,value-1+" "+t);
                     break;
                 }
             }
         }
-        SharedPreferences.Editor editor = prefs.edit();
+        /*SharedPreferences.Editor editor = prefs.edit();
         Set<String> newSet = new HashSet<String>();
         newSet.addAll(listPanier);
         editor.putStringSet(SHARED_PREFS_KEY_PANIER,newSet);
-        editor.commit();
+        editor.commit();*/
     }
+
 
 
 }

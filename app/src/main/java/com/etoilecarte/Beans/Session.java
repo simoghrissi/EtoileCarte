@@ -11,7 +11,7 @@ public class Session {
     public static Session instance = null;
     public static String idTableIncach =null;
     public static Table table;
-
+    public static ArrayList<String> panier =null;
     public static ArrayList<Table>arrayTable = new ArrayList<>();
 
     public static void newTable(final String idTable) {

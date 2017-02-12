@@ -38,7 +38,6 @@ public class CustomAdapterList extends ArrayAdapter<Food> {
     SharedPreferences prefs;
     public CustomAdapterList(Context context, ArrayList<Food> foods){
         super(context, R.layout.custom_row ,foods);
-         applicationContext = MainActivity.getContextOfApplication();
          prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext);
 
 

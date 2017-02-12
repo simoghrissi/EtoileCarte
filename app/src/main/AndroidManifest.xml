@@ -16,7 +16,7 @@
 
 
         <activity
-            android:name=".Activities.TableActivity"
+            android:name=".Activities.TableFragment"
             android:icon="@mipmap/ic_launcher"
             android:screenOrientation="portrait"
             android:label="La petite étoile">
@@ -37,7 +37,7 @@
         </activity>
 
         <activity
-            android:name=".Activities.ListFoods"
+            android:name=".Activities.ListFoodsFragment"
             android:label="List Foods"
             android:parentActivityName=".Activities.MainActivity">
             <meta-data
@@ -46,7 +46,7 @@
         </activity>
 
         <activity
-            android:name=".Activities.Setting"
+            android:name=".Activities.SettingFragment"
             android:label="List Foods"
             android:parentActivityName=".Activities.MainActivity">
             <meta-data
@@ -54,15 +54,15 @@
                 android:value=".Activities.MainActivity" />
         </activity>
         <activity
-            android:name=".Activities.DetailsActivity"
+            android:name=".Activities.DetailsFragment"
             android:label="Details Foods"
-            android:parentActivityName=".Activities.ListFoods">
+            android:parentActivityName=".Activities.ListFoodsFragment">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.ListFoods" />
+                android:value=".Activities.ListFoodsFragment" />
         </activity>
         <activity
-            android:name=".Activities.PanierActivity"
+            android:name=".Activities.PanierFragment"
             android:label="Details Foods"
             android:parentActivityName=".Activities.MainActivity">
             <meta-data

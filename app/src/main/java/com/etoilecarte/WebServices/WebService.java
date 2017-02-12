@@ -73,19 +73,18 @@ public class WebService {
         return null;
     }
 
-    public ArrayList<Article> listArticle(int categorie,String url) {
+    public ArrayList<Article> listArticle(String idCategorie,String url) {
         try {
             CloseableHttpClient httpclient = HttpClients.createDefault();
              url = url+"/ListArticles";
 
             HttpPost post = new HttpPost(url);
             // add header
-            String idcat = Integer.toString(categorie);
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
             List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
-            urlParameters.add(new BasicNameValuePair("categoryID",idcat ));
+            urlParameters.add(new BasicNameValuePair("categoryID",idCategorie));
 
             post.setEntity(new UrlEncodedFormEntity(urlParameters));
 

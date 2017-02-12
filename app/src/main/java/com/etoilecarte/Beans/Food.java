@@ -10,7 +10,7 @@ public class Food {
 
 
 
-int idFood;
+    int idFood;
     String titre    ;
     String smallImage;
     String description ;

@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.etoilecarte.Activities.ListFoods;
+import com.etoilecarte.Activities.ListFoodsFragment;
 import com.etoilecarte.Beans.Adapter;
 import com.etoilecarte.R;
 import com.etoilecarte.WebServices.WebService;
@@ -76,7 +76,7 @@ public class noMain extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        Intent i=new Intent(noMain.this,ListFoods.class);
+        Intent i=new Intent(noMain.this,ListFoodsFragment.class);
         //i.putExtra("idpizza", pizza);
         startActivity(i);
     }

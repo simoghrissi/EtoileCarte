@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.etoilecarte.Beans.MyAdapter;
 import com.etoilecarte.R;
 import com.etoilecarte.Utils.FragmentManagerUtil;
+import com.etoilecarte.WebServices.AbstractConnexion;
+import com.etoilecarte.WebServices.BackgroundConfirmation;
 import com.etoilecarte.WebServices.ConnectionServer;
 
 import static com.etoilecarte.Activities.TableFragment.Table_ID_KEY;
@@ -57,6 +59,7 @@ public class PrincipalFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        runMainActivity();
     }
 
     public void runMainActivity(){
@@ -72,23 +75,32 @@ public class PrincipalFragment extends Fragment {
         //   imageJour.setOnClickListener(this);
         imageLogo.setImageResource(R.drawable.logo);
         //  imageJour.setImageResource(R.drawable.menudujour);
-        Boolean testConnection = ConnectionServer.getInstance().IsReachable(getActivity(), url);
-        if (testConnection) {
-            GridView gridView = (GridView) rootView.findViewById(R.id.gridview);
-            gridView.setAdapter(new MyAdapter(getActivity()));
+        // Boolean testConnection = ConnectionServer.getInstance().IsReachable(getActivity(), url);
+        BackgroundConfirmation connexionbackground = new BackgroundConfirmation(new AbstractConnexion() {
+            @Override
+            public void onSuccessed() {
+                GridView gridView = (GridView) rootView.findViewById(R.id.gridview);
+                gridView.setAdapter(new MyAdapter(getActivity()));
 
-            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
-                    MyAdapter.Item item = (MyAdapter.Item) parent.getItemAtPosition(position);
-                    int idCat = item.id;
-                    FragmentManagerUtil.replaceMainFragments(getActivity(),new ListFoodsFragment().newInstance(getTableId(),Integer.toString(idCat)));
+                        MyAdapter.Item item = (MyAdapter.Item) parent.getItemAtPosition(position);
+                        int idCat = item.id;
+                        FragmentManagerUtil.replaceMainFragments(getActivity(),new ListFoodsFragment().newInstance(getTableId(),Integer.toString(idCat)));
 
-                }
-            });
-        }
+                    }
+                });
+            }
+
+            @Override
+            public void onFailed() {
+
+            }
+        });
+        connexionbackground.execute();
+
+
     }
 
 }
-
-

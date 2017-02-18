@@ -14,7 +14,7 @@ public class Table {
     ArrayList<Food> foods ;
 
     public void Table(){};
-    public String getIdTable() {
+    public String  getIdTable() {
         return idTable;
     }
 

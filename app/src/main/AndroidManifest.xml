@@ -14,17 +14,6 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
-
-        <activity
-            android:name=".Activities.TableFragment"
-            android:icon="@mipmap/ic_launcher"
-            android:screenOrientation="portrait"
-            android:label="La petite étoile">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".Activities.MainActivity"
             android:icon="@mipmap/ic_launcher"
@@ -34,40 +23,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".Activities.ListFoodsFragment"
-            android:label="List Foods"
-            android:parentActivityName=".Activities.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.MainActivity" />
-        </activity>
-
-        <activity
-            android:name=".Activities.SettingFragment"
-            android:label="List Foods"
-            android:parentActivityName=".Activities.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.MainActivity" />
-        </activity>
-        <activity
-            android:name=".Activities.DetailsFragment"
-            android:label="Details Foods"
-            android:parentActivityName=".Activities.ListFoodsFragment">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.ListFoodsFragment" />
-        </activity>
-        <activity
-            android:name=".Activities.PanierFragment"
-            android:label="Details Foods"
-            android:parentActivityName=".Activities.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.MainActivity" />
         </activity>
 
     </application>

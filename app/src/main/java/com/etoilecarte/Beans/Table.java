@@ -12,7 +12,7 @@ public class Table {
 
     String idTable ;
     ArrayList<Food> foods ;
-
+    public static ArrayList<String> panier =null;
     public void Table(){};
     public String  getIdTable() {
         return idTable;

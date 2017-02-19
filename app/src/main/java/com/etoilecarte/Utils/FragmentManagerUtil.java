@@ -56,7 +56,7 @@ public class FragmentManagerUtil {
         android.support.v4.app.FragmentManager vFragmentManager = pActivity.getSupportFragmentManager();
         //Commencement de la transaction
         FragmentTransaction vFragmentTransaction = vFragmentManager.beginTransaction();
-        vFragmentTransaction.replace(R.id.main, pFragment);
+        vFragmentTransaction.replace(R.id.content_frame, pFragment);
         vFragmentTransaction.addToBackStack(null);
         vFragmentTransaction.commitAllowingStateLoss();
 

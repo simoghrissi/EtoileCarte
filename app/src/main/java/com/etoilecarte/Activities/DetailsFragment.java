@@ -32,8 +32,8 @@ public class DetailsFragment extends Fragment {
         return getArguments().getString(FOOD_TEXT_KEY);
     }
     View rootView;
-    public static PanierFragment newInstance(String largeImageId,String textId) {
-        PanierFragment fragment = new PanierFragment();
+    public static DetailsFragment newInstance(String largeImageId,String textId) {
+        DetailsFragment fragment = new DetailsFragment();
         Bundle args = new Bundle();
         args.putString(FOOD_IMAGE_KEY, largeImageId);
         args.putString(FOOD_TEXT_KEY, textId);

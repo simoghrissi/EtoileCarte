@@ -16,7 +16,7 @@ import java.net.URL;
 /**
  * Created by simo on 28/08/2016.
  */
-public class ConnectionServer  extends AppCompatActivity {
+public class ConnectionServer {
 
     private static ConnectionServer instance;
     String urlString=null ;

@@ -34,13 +34,9 @@ import static com.etoilecarte.Activities.MainActivity.SHARED_PREFS_KEY_PANIER;
  */
 public class CustomAdapterList extends ArrayAdapter<Food> {
    // ArrayList listPanier;
-    Context applicationContext;
     SharedPreferences prefs;
     public CustomAdapterList(Context context, ArrayList<Food> foods){
         super(context, R.layout.custom_row ,foods);
-         prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext);
-
-
     }
 
     @Override
@@ -112,24 +108,26 @@ public class CustomAdapterList extends ArrayAdapter<Food> {
     }
 
     public void addToPanier(String t) {
+        Table table = Utils.searchTableById(Session.table.getIdTable());
+        Session.table =table ;
         boolean finded = false;
-        if (null == Session.panier) {
-            Session.panier = new ArrayList<String>();
-            Session.panier.add(0+" "+t);
+        if (null == Session.table.panier) {
+            Session.table.panier = new ArrayList<String>();
+            Session.table.panier.add(0+" "+t);
             finded = true;
         }
-        for(int i =0;i<Session.panier.size();i++){
-            if(Session.panier.get(i).toString().contains(t)){
-                if(Session.panier.get(i).toString().matches(".*\\d.*")){
-                    int value = Integer.parseInt(Session.panier.get(i).toString().replaceAll("[^0-9]", ""));
-                    Session.panier.set(i,value+1+" "+t);
+        for(int i =0;i<Session.table.panier.size();i++){
+            if(Session.table.panier.get(i).toString().contains(t)){
+                if(Session.table.panier.get(i).toString().matches(".*\\d.*")){
+                    int value = Integer.parseInt(Session.table.panier.get(i).toString().replaceAll("[^0-9]", ""));
+                    Session.table.panier.set(i,value+1+" "+t);
                     finded=true;
                     break;
                 }
             }
         }
         if(finded==false){
-            Session.panier.add(1+" "+t);
+            Session.table.panier.add(1+" "+t);
         }
         // call preferences from MainActivity;
        /* SharedPreferences.Editor editor = prefs.edit();
@@ -140,19 +138,19 @@ public class CustomAdapterList extends ArrayAdapter<Food> {
     }
 
     public void deleteFromPanier(String t){
+        Table table = Utils.searchTableById(Session.table.getIdTable());
+        Session.table =table ;
 
-        Set<String> set = prefs.getStringSet(SHARED_PREFS_KEY_PANIER,null);
-        Session.panier=new ArrayList<String>(set);
 // a finir le cas             if(listPanier.get(i).toString().equalsIgnoreCase(0+" "+t)){
 //+ traitement du bouton quand on part et on reviens !!! d'une vue a une autre .
-        for(int i =0;i<Session.panier.size();i++){
-            if(Session.panier.get(i).toString().equalsIgnoreCase(0+" "+t)){
-                Session.panier.remove(Session.panier.get(i));
+        for(int i =0;i<Session.table.panier.size();i++){
+            if(Session.table.panier.get(i).toString().equalsIgnoreCase(0+" "+t)){
+                Session.table.panier.remove(Session.table.panier.get(i));
                 break;
-            }else if(Session.panier.get(i).toString().contains(t)){
-                if(Session.panier.get(i).toString().matches(".*\\d.*")){
-                    int value = Integer.parseInt(Session.panier.get(i).toString().replaceAll("[^0-9]", ""));
-                    Session.panier.set(i,value-1+" "+t);
+            }else if(Session.table.panier.get(i).toString().contains(t)){
+                if(Session.table.panier.get(i).toString().matches(".*\\d.*")){
+                    int value = Integer.parseInt(Session.table.panier.get(i).toString().replaceAll("[^0-9]", ""));
+                    Session.table.panier.set(i,value-1+" "+t);
                     break;
                 }
             }

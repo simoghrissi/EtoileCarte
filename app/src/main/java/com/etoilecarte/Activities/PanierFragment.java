@@ -10,7 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.etoilecarte.Beans.Session;
+import com.etoilecarte.Beans.Table;
 import com.etoilecarte.R;
+import com.etoilecarte.Utils.Utils;
 
 import static com.etoilecarte.Activities.TableFragment.Table_ID_KEY;
 
@@ -47,8 +49,9 @@ public class PanierFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mListView = (ListView) rootView.findViewById(R.id.listView_panier);
-
-            mListView.setAdapter(new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,Session.panier));
+        Table table = Utils.searchTableById(getTableId());
+        Session.table =table ;
+            mListView.setAdapter(new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,Session.table.panier));
 
     }
 

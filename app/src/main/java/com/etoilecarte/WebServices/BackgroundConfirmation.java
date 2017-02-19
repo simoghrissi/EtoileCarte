@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
 
+import java.io.IOException;
+
 import static com.etoilecarte.Activities.MainActivity.getContextOfApplication;
 import static com.etoilecarte.Activities.PrincipalFragment.url;
 
@@ -12,7 +14,7 @@ import static com.etoilecarte.Activities.PrincipalFragment.url;
  */
 
 
-public class BackgroundConfirmation extends AsyncTask<Void, Integer, Boolean>{
+public class BackgroundConfirmation extends AsyncTask<Void, Integer, Void>{
 
     ProgressDialog progressDialog;
     AbstractConnexion abstractConnexion;
@@ -20,19 +22,18 @@ public class BackgroundConfirmation extends AsyncTask<Void, Integer, Boolean>{
     public  BackgroundConfirmation(AbstractConnexion abstractConnexion){
         this.abstractConnexion= abstractConnexion;
     }
+
+
     @Override
-    protected Boolean doInBackground(Void... params) {
+    protected Void doInBackground(Void... voids) {
         Boolean testConnection=false;
-        try {
-            testConnection = ConnectionServer.getInstance().IsReachable(getContextOfApplication(), url);
+        testConnection = ConnectionServer.getInstance().IsReachable(getContextOfApplication(), url);
+        if(testConnection)
             abstractConnexion.onSuccessed();
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        else
             abstractConnexion.onFailed();
-        }
 
-        return testConnection;
+        return  null;
     }
 
     @Override
@@ -45,7 +46,7 @@ public class BackgroundConfirmation extends AsyncTask<Void, Integer, Boolean>{
 
 
     @Override
-    protected void onPostExecute(Boolean aBoolean) {
+    protected void onPostExecute(Void aBoolean) {
         super.onPostExecute(aBoolean);
 
     }

@@ -1,8 +1,6 @@
 package com.etoilecarte.Beans;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.etoilecarte.Activities.MainActivity;
-import com.etoilecarte.Activities.PrincipalFragment;
 import com.etoilecarte.R;
-import com.etoilecarte.WebServices.WebService;
-import com.tktm.lyvraison.beans.Category;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,40 +19,26 @@ import java.util.List;
 
 public class MyAdapter extends BaseAdapter {
 
-    private List<Item> items = new ArrayList<Item>();
+    private List<CategorieMenuItem> menuItems = new ArrayList<CategorieMenuItem>();
     private LayoutInflater inflater;
+    Context context;
 
-    public MyAdapter(Context context) {
+    public MyAdapter(Context context,ArrayList<CategorieMenuItem> menuItems) {
         //String address = context.getResources().getString(R.string.adressConnect);
-        WebService webService = new WebService(context);
 
-        // Asynck Task
-        ArrayList<Category> listCategorie = webService.listProduit(PrincipalFragment.url);
-        inflater = LayoutInflater.from(context);
-
-
-        for (Category cat : listCategorie) {
-
-            try {
-                Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(PrincipalFragment.url+"/" + cat.getDescription().getImagePath()).getContent());
-                items.add(new Item(cat.getName(), bitmap, cat.getId()));
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
+        this.context = context ;
+        this.menuItems= menuItems;
 
     }
 
     @Override
     public int getCount() {
-        return items.size();
+        return menuItems.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return items.get(i);
+        return menuItems.get(i);
     }
 
     @Override
@@ -74,7 +51,7 @@ public class MyAdapter extends BaseAdapter {
         View v = view;
         ImageView picture;
         TextView name;
-
+        inflater = LayoutInflater.from(context);
         if (v == null) {
             v = inflater.inflate(R.layout.gridview_item, viewGroup, false);
             v.setTag(R.id.picture, v.findViewById(R.id.picture));
@@ -84,7 +61,7 @@ public class MyAdapter extends BaseAdapter {
         picture = (ImageView) v.getTag(R.id.picture);
         name = (TextView) v.getTag(R.id.text);
 
-        Item item = (Item) getItem(i);
+        CategorieMenuItem item = (CategorieMenuItem) getItem(i);
 
         picture.setImageBitmap(item.url);
 
@@ -93,15 +70,5 @@ public class MyAdapter extends BaseAdapter {
         return v;
     }
 
-    public class Item {
-        final String name;
-        final Bitmap url;
-        public final int id;
 
-        Item(String name, Bitmap url, int id) {
-            this.name = name;
-            this.id = id;
-            this.url = url;
-        }
     }
-}

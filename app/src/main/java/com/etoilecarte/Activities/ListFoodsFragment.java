@@ -27,6 +27,7 @@ import com.tktm.lyvraison.beans.Category;
 import java.util.ArrayList;
 
 import static com.etoilecarte.Activities.PrincipalFragment.CAT_ID_KEY;
+import static com.etoilecarte.Activities.PrincipalFragment.url;
 import static com.etoilecarte.Activities.TableFragment.Table_ID_KEY;
 
 
@@ -76,7 +77,7 @@ public class ListFoodsFragment extends Fragment implements  AdapterView.OnItemCl
 
             if (!(getCatId() == null || getCatId().equalsIgnoreCase(""))){
 
-            articles=webService.listArticle(getCatId(),PrincipalFragment.url);
+            articles=webService.listArticle(getCatId(),url);
 
             for(Article article :articles ){
                 Food food = new Food();
@@ -103,7 +104,8 @@ public class ListFoodsFragment extends Fragment implements  AdapterView.OnItemCl
         listView.getItemAtPosition(i);
         String largeImage =articles.get(i).getDescription().getUrlLargeImage();
         String textName=articles.get(i).getName();
-        FragmentManagerUtil.replaceMainFragments(getActivity(),new DetailsFragment().newInstance(largeImage,textName));
+       // FragmentManagerUtil.replaceMainFragments(getActivity(),new DetailsFragment().newInstance(largeImage,textName));
+        FragmentManagerUtil.replaceMainFragments(getActivity(),new PanierFragment().newInstance(getTableId()));
 
 
     }

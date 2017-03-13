@@ -1,17 +1,16 @@
 package com.etoilecarte.Activities;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.etoilecarte.Beans.Session;
@@ -56,6 +55,7 @@ public class TableFragment extends Fragment{
         String buttonId="";
 
         ViewGroup parentView = (ViewGroup) rootView.findViewById(R.id.tableActivity);
+
         for(int i=0; i < parentView.getChildCount(); i++) {
             //int id = getResources().getIdentifier("button_"+i, "id", getPackageName());
             View childView = parentView.getChildAt(i);
@@ -88,6 +88,28 @@ public class TableFragment extends Fragment{
             });
 
         }
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((Activity) getContext()).getWindowManager()
+                .getDefaultDisplay()
+                .getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+
+        Button but1 = new Button(getContext());
+        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        int withref= 1900;
+        int highref =2000;
+        int withB=250;
+        int heighB=300;
+        but1.setX(width*200/(withref));
+        but1.setY(height*150/highref);
+        but1.setWidth(width*withB/withref);
+        but1.setHeight(height*heighB/highref);
+        but1.setLayoutParams(params2);
+        but1.setText("Press Here!");
+        parentView.addView(but1);
+// give the button an id that we know
     }
 
 

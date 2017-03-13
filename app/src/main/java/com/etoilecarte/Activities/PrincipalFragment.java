@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.etoilecarte.Beans.CategorieMenuItem;
 import com.etoilecarte.Beans.MyAdapter;
+import com.etoilecarte.Beans.Session;
 import com.etoilecarte.R;
 import com.etoilecarte.Utils.FragmentManagerUtil;
 import com.etoilecarte.WebServices.AbstractConnexion;
@@ -62,6 +63,7 @@ public class PrincipalFragment extends Fragment {
         rootView = inflater.inflate(R.layout.activity_main, container, false);
         return rootView;
     }
+
     public String getTableId() {
         return getArguments().getString(Table_ID_KEY);
     }
@@ -75,9 +77,6 @@ public class PrincipalFragment extends Fragment {
         runMainActivity();
 
 
-
-
-
         // hide clavier
       /*InputMethodManager inputManager =
                 (InputMethodManager) getContext().
@@ -88,17 +87,16 @@ public class PrincipalFragment extends Fragment {
 
     }
 
-    public void setAdapterMenuItem(){
+    public void setAdapterMenuItem() {
 
-        WebService webService = new WebService(getContext());
         // Asynck Task
-        ArrayList<Category> listCategorie = webService.listProduit(PrincipalFragment.url);
+        ArrayList<Category> listCategorie = Session.instance.getListCategorie(getContext());
 
         ArrayList<CategorieMenuItem> ListmenuItems = new ArrayList<>();
         for (Category cat : listCategorie) {
 
             try {
-                Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(PrincipalFragment.url+"/" + cat.getDescription().getImagePath()).getContent());
+                Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(PrincipalFragment.url + "/" + cat.getDescription().getImagePath()).getContent());
                 ListmenuItems.add(new CategorieMenuItem(cat.getName(), bitmap, cat.getId()));
 
             } catch (IOException e) {
@@ -109,9 +107,8 @@ public class PrincipalFragment extends Fragment {
 
         GridView gridView = (GridView) rootView.findViewById(R.id.gridview);
 
-                MyAdapter gridViewAdapter = new MyAdapter(rootView.getContext(),ListmenuItems);
-                gridView.setAdapter(gridViewAdapter);
-
+        MyAdapter gridViewAdapter = new MyAdapter(rootView.getContext(), ListmenuItems);
+        gridView.setAdapter(gridViewAdapter);
 
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -119,29 +116,30 @@ public class PrincipalFragment extends Fragment {
 
                 CategorieMenuItem item = (CategorieMenuItem) parent.getItemAtPosition(position);
                 int idCat = item.id;
-                FragmentManagerUtil.replaceMainFragments(getActivity(),new ListFoodsFragment().newInstance(getTableId(),Integer.toString(idCat)));
+                FragmentManagerUtil.replaceMainFragments(getActivity(), new ListFoodsFragment().newInstance(getTableId(), Integer.toString(idCat)));
 
             }
         });
 
     }
-    public void runMainActivity(){
+
+    public void runMainActivity() {
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         url = preferences.getString("ServerName", "");
-        if (url.equals("")){
+        if (url.equals("")) {
             Toast.makeText(getActivity(), "L'adresse du serveur est Invalide",
                     Toast.LENGTH_LONG).show();
         }
-        ImageView imageLogo = (ImageView)rootView.findViewById(R.id.imageLogo);
+        ImageView imageLogo = (ImageView) rootView.findViewById(R.id.imageLogo);
         imageLogo.setImageResource(R.drawable.logo);
 
         Boolean testConnection = ConnectionServer.getInstance().IsReachable(getActivity(), url);
-        if(testConnection){
+        if (testConnection) {
             setAdapterMenuItem();
         }
-        }
+    }
 
 
 }

@@ -77,7 +77,7 @@ public class ListFoodsFragment extends Fragment implements  AdapterView.OnItemCl
 
             if (!(getCatId() == null || getCatId().equalsIgnoreCase(""))){
 
-            articles=webService.listArticle(getCatId(),url);
+            articles= Session.instance.getListArticle(getCatId(),url);
 
             for(Article article :articles ){
                 Food food = new Food();

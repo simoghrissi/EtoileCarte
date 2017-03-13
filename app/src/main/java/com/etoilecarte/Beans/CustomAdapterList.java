@@ -103,7 +103,6 @@ public class CustomAdapterList extends ArrayAdapter<Food> {
             e.printStackTrace();
         }
 
-
         return customView;
     }
 

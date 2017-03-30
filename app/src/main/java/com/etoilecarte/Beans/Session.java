@@ -10,7 +10,6 @@ import com.tktm.lyvraison.beans.Category;
 
 import java.util.ArrayList;
 
-import static com.etoilecarte.Activities.PrincipalFragment.url;
 
 /**
  * Created by mghrissi on 30/01/2017.

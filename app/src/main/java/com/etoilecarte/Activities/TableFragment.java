@@ -98,12 +98,12 @@ public class TableFragment extends Fragment{
         Button but1 = new Button(getContext());
         RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-        int withref= 1900;
-        int highref =2000;
+        int withref= 1366;
+        int highref =768;
         int withB=250;
         int heighB=300;
-        but1.setX(width*200/(withref));
-        but1.setY(height*150/highref);
+        but1.setX(width*11/(withref));
+        but1.setY(height*11/highref);
         but1.setWidth(width*withB/withref);
         but1.setHeight(height*heighB/highref);
         but1.setLayoutParams(params2);

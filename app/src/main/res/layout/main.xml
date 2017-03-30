@@ -1,15 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main">
 
-        <!-- As the main content view, the view below consumes the entire
-             space available using match_parent in both dimensions. -->
         <FrameLayout
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"/>
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@color/semiblack"
+            android:minHeight="?attr/actionBarSize">
+                <Button
+                    android:id="@+id/bSetting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setting" />
+                <Button
+                    android:id="@+id/bAcceuil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/acceuil" />
+                <Button
+                    android:id="@+id/bTables"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/table" />
+                <Button
+                    android:id="@+id/bPanier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:text="@string/panier" />
+                <!-- As the main content view, the view below consumes the entire
+                     space available using match_parent in both dimensions. -->
 
-
+        </LinearLayout>
 </RelativeLayout>

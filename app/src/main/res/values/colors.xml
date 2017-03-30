@@ -3,4 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="blue_dark">#073A8C</color>
+    <color name="material_progress_bar">#5588FF</color>
+    <color name="details_contact_separateur">#3333B5E5</color>
+    <color name="michelin_logo">#0254a0</color>
+    <color name="semiblack">#212121</color>
+
+
 </resources>

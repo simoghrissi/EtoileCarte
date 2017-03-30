@@ -49,9 +49,11 @@ public class PanierFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mListView = (ListView) rootView.findViewById(R.id.listView_panier);
-        Table table = Utils.searchTableById(getTableId());
-        Session.table =table ;
+        if(getTableId()!=null){
+            Table table = Utils.searchTableById(getTableId());
+            Session.table =table ;
             mListView.setAdapter(new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,Session.table.panier));
+        }
 
     }
 

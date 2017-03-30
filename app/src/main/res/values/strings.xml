@@ -2,5 +2,8 @@
     <string name="app_name">EtoileCarte</string>
 
     <string name="adressConnect">http://10.0.2.2:8080/EPOSWEB/</string>
-
+    <string name= "panier">Panier</string>
+    <string name= "acceuil">Acceuil</string>
+    <string name= "table">Tables</string>
+    <string name= "setting">Setting</string>
 </resources>

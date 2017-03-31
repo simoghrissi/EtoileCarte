@@ -6,4 +6,9 @@
     <string name= "acceuil">Acceuil</string>
     <string name= "table">Tables</string>
     <string name= "setting">Setting</string>
+
+    <string name ="erreurTitle">Erreur</string>
+    <string name ="erreurMessage">Une erreur technique est survenue. </string>
+    <string name ="erreurPanierTitle">Erreur Panier</string>
+    <string name ="erreurPanierVide">Votre panier est vide </string>
 </resources>

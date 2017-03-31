@@ -48,11 +48,12 @@ public class PrincipalFragment extends Fragment {
     View rootView;
     public static String url;
     public static final String CAT_ID_KEY = "catId";
+    public static String idTable ;
 
-    public static PrincipalFragment newInstance(String contactId) {
+    public static PrincipalFragment newInstance(String tableId) {
         PrincipalFragment fragment = new PrincipalFragment();
         Bundle args = new Bundle();
-        args.putString(Table_ID_KEY, contactId);
+        args.putString(Table_ID_KEY, tableId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -75,7 +76,7 @@ public class PrincipalFragment extends Fragment {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         runMainActivity();
-
+        idTable=getTableId();
 
         // hide clavier
       /*InputMethodManager inputManager =

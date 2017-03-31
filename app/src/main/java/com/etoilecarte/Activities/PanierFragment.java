@@ -12,6 +12,7 @@ import android.widget.ListView;
 import com.etoilecarte.Beans.Session;
 import com.etoilecarte.Beans.Table;
 import com.etoilecarte.R;
+import com.etoilecarte.Utils.DialogUtils;
 import com.etoilecarte.Utils.Utils;
 
 import static com.etoilecarte.Activities.TableFragment.Table_ID_KEY;

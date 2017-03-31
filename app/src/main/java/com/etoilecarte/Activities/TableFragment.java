@@ -70,7 +70,6 @@ public class TableFragment extends Fragment{
                     if(Session.arrayTable.isEmpty()){
                         Session.newTable(finalButtonId);
                         Toast.makeText(getActivity(), finalButtonId, Toast.LENGTH_LONG).show();
-
                         FragmentManagerUtil.replaceMainFragments(getActivity(),new PrincipalFragment().newInstance(finalButtonId));
 
                     }else{
